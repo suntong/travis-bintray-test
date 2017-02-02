@@ -5,15 +5,16 @@ go:
 - 1.8rc3
 
 env:
-- NAME=john
-- NAME=jane
+  matrix:
+  - NAME=john
+  - NAME=jane
 
 install:
 
 before_deploy:
   - gem install fpm --no-document
   - make pkg
-  - sed -i'' -e "s/\$VERSION/${TRAVIS_TAG:=0.0.1}/" descriptor.json
+  - sed -i'' -e "s/\$VERSION/${TRAVIS_TAG:=0.0.0}/" descriptor.json
   - sed -i'' -e "s/\$DATE/$(date +%Y-%m-%d)/" descriptor.json
 
 deploy:
@@ -26,3 +27,15 @@ deploy:
     skip_cleanup: true
     on:
       go: 1.7.5
+      tags: true
+
+  # "staging" deploy
+  - provider: bintray
+    user: dominikznidar
+    key:
+      secure: HF/mwb+YEVTbcpcvFWnE7VuND354Fv5gDV+pwM8KGqglP6tIf0jZlQG5xyDyfNhm91yknFTLmhAmrYIKbCa4DvvUDPK7zzd/sp91yUKiFx0mgzBLAJls63k/T8cEHnJoC07YgG+/21vpM9xVj6bmNPST/W6NOTqRNt/PiARHZCfB8LcmgUZJyPHBmDX7H8cxIkEMYIkqTpBRCNfWIa98gbQqxrenBGsdqtB5+N8NR5mqtxpKto1RyBul3NXM6Fxy5tWDjUeGWDDcTbmld1xIJN+LfKGWKTcXWqBo3fA4rc/kzhrwj/JX45eCDUAYH+Z2vjZijFewUvMEy3aT1ATtEh9QuGvArxnRLGYsZntL8jI1isBMPfxwUbbKIgLWsMyoSv5xpNk8jjQdH6c6l7sCof1i97/a8cfXUMYYok3SxvLjQJvijGroNqweaKTeRgFfquz2gwaqM9mwNHXjLFXoPqQB0E+x2lZM/zdxHlW2De0OLivB4gjDa5B3FDcbUG55al9HpTLOmvXVJG7G+1NlUD2bqkLmmtLIae0yHTrztxSijGisG168l/yOvg6PFDqK/b23NCr6YgKn2b5KEfcPnw2roSSdvp9GEKtQpYbRSsvpgAmq3Rve54CPeFbRfRu7GqnXnYAr50Tp4SL1iuCmDuvppH7t7g6rEpp0gk3s1EA=
+    file: descriptor.json
+    skip_cleanup: true
+    on:
+      go: 1.7.5
+      branch: master
