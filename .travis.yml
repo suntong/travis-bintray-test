@@ -5,11 +5,11 @@ go:
 - 1.8rc3
 
 env:
+  global:
+    - secure: "WCGl6fgiFfoGBPT2w8ER+izp9/zswvt2swuoGW4IBDQMT52KZRlx23oxabzud7/wZN6OJTHpfibcFQ1zvc/SL6UMzissxFSumCnIHqorf2IMMX6f0AX2AG8X9YaaQdKbWtcpeVASeTiezptTP/P9EvyvgvSAU0nSm4Lp1n989AFEQY70pRI3bI0PzjOhkzyYaFszBX78lMAueG9XSpNax29yFEEL43XsZhE+dDkQy79wtub+f/RyhsGaxs5gNpS0kx8ca1ihiITjst95kzqWM8kxmjayG3VXE9GaFBlMf961g0RPXipvaOaXJeo4OdOPleW6MulBIhm3BO+JNcFkLoRN3GV4JBmI0Usx3F0E+26S+Opw3h0wIWTFZZ3eq0zNrQFPiSe2zosDuUd52GHpL+pX620wTZdCGV8HWPchE9411KEHtZPTnNDOQKwk47W5k+2v5BL0J47U2FYUnyDwxmerlOy2QVsGzuUI+z7OyNgTPR/TprdMsdMkpc+o+1d7js12XVSYK/nAWd0qwemhd8gtYkpHt62bRqcJgrmQ3xTPhvWu82RbqGKn80k9kSYr5aV7v7jb+l2+k9SNBOO7v37G5pLFOxIwmXOZn+tY3DuXp+Qpxsi45Qw4ayKUeg/LFmiRuWO8LWq3CqOoMthxWONUPA9exqNEAATtb2qyA6g="
   matrix:
   - NAME=john
   - NAME=jane
-
-install:
 
 before_deploy:
   - gem install fpm --no-document
@@ -21,8 +21,7 @@ deploy:
   # "production" deploy
   - provider: bintray
     user: dominikznidar
-    key:
-      secure: HF/mwb+YEVTbcpcvFWnE7VuND354Fv5gDV+pwM8KGqglP6tIf0jZlQG5xyDyfNhm91yknFTLmhAmrYIKbCa4DvvUDPK7zzd/sp91yUKiFx0mgzBLAJls63k/T8cEHnJoC07YgG+/21vpM9xVj6bmNPST/W6NOTqRNt/PiARHZCfB8LcmgUZJyPHBmDX7H8cxIkEMYIkqTpBRCNfWIa98gbQqxrenBGsdqtB5+N8NR5mqtxpKto1RyBul3NXM6Fxy5tWDjUeGWDDcTbmld1xIJN+LfKGWKTcXWqBo3fA4rc/kzhrwj/JX45eCDUAYH+Z2vjZijFewUvMEy3aT1ATtEh9QuGvArxnRLGYsZntL8jI1isBMPfxwUbbKIgLWsMyoSv5xpNk8jjQdH6c6l7sCof1i97/a8cfXUMYYok3SxvLjQJvijGroNqweaKTeRgFfquz2gwaqM9mwNHXjLFXoPqQB0E+x2lZM/zdxHlW2De0OLivB4gjDa5B3FDcbUG55al9HpTLOmvXVJG7G+1NlUD2bqkLmmtLIae0yHTrztxSijGisG168l/yOvg6PFDqK/b23NCr6YgKn2b5KEfcPnw2roSSdvp9GEKtQpYbRSsvpgAmq3Rve54CPeFbRfRu7GqnXnYAr50Tp4SL1iuCmDuvppH7t7g6rEpp0gk3s1EA=
+    key: $BINTRAY_API_KEY
     file: descriptor.json
     skip_cleanup: true
     on:
@@ -32,8 +31,7 @@ deploy:
   # "staging" deploy
   - provider: bintray
     user: dominikznidar
-    key:
-      secure: HF/mwb+YEVTbcpcvFWnE7VuND354Fv5gDV+pwM8KGqglP6tIf0jZlQG5xyDyfNhm91yknFTLmhAmrYIKbCa4DvvUDPK7zzd/sp91yUKiFx0mgzBLAJls63k/T8cEHnJoC07YgG+/21vpM9xVj6bmNPST/W6NOTqRNt/PiARHZCfB8LcmgUZJyPHBmDX7H8cxIkEMYIkqTpBRCNfWIa98gbQqxrenBGsdqtB5+N8NR5mqtxpKto1RyBul3NXM6Fxy5tWDjUeGWDDcTbmld1xIJN+LfKGWKTcXWqBo3fA4rc/kzhrwj/JX45eCDUAYH+Z2vjZijFewUvMEy3aT1ATtEh9QuGvArxnRLGYsZntL8jI1isBMPfxwUbbKIgLWsMyoSv5xpNk8jjQdH6c6l7sCof1i97/a8cfXUMYYok3SxvLjQJvijGroNqweaKTeRgFfquz2gwaqM9mwNHXjLFXoPqQB0E+x2lZM/zdxHlW2De0OLivB4gjDa5B3FDcbUG55al9HpTLOmvXVJG7G+1NlUD2bqkLmmtLIae0yHTrztxSijGisG168l/yOvg6PFDqK/b23NCr6YgKn2b5KEfcPnw2roSSdvp9GEKtQpYbRSsvpgAmq3Rve54CPeFbRfRu7GqnXnYAr50Tp4SL1iuCmDuvppH7t7g6rEpp0gk3s1EA=
+    key: $BINTRAY_API_KEY
     file: descriptor.json
     skip_cleanup: true
     on:
