@@ -8,4 +8,5 @@ env:
   - NAME=john
   - NAME=jane
 
-# matrix:
+install:
+  - gem install fpm --no-document
