@@ -1,0 +1,28 @@
+{
+    "package": {
+        "name": "hello",
+        "repo": "travis-example",
+        "subject": "dominikznidar"
+    },
+
+    "version": {
+        "name": "$VERSION",
+        "desc": "Release $VERSION",
+        "released": "$DATE",
+        "vcs_tag": "$VERSION",
+        "gpgSign": true
+    },
+
+    "files": [{
+        "includePattern": "pkg/(.*)\\.deb",
+        "uploadPattern": "hello_$1_$VERSION_amd64.deb",
+        "matrixParams": {
+            "deb_distribution": "hello",
+            "deb_component": "main",
+            "deb_architecture": "amd64",
+            "override": 1
+        }
+    }],
+
+    "publish": true
+}
