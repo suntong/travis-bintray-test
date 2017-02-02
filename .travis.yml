@@ -9,9 +9,10 @@ env:
 - NAME=jane
 
 install:
-- gem install fpm --no-document
 
 before_deploy:
+  - gem install fpm --no-document
+  - make pkg
   - sed -i'' -e "s/\$VERSION/${TRAVIS_TAG:=0.0.1}/" descriptor.json
   - sed -i'' -e "s/\$DATE/$(date +%Y-%m-%d)/" descriptor.json
 

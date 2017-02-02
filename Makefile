@@ -1,7 +1,7 @@
 NAME    ?= john
 VERSION ?= 0.0.0
 
-all: test build pkg
+all: test
 
 clean: cleanbuild cleanpkg
 cleanbuild:
@@ -17,7 +17,7 @@ build/%/hello:
 	mkdir -p build/$*
 	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -a -installsuffix cgo -ldflags "-X main.name=$*" -o build/$*/hello
 
-pkg: pkg/$(NAME).deb
+pkg: build pkg/$(NAME).deb
 pkg/%.deb:
 	mkdir -p ./pkg
 	fpm -s dir -t deb \
