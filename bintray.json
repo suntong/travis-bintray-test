@@ -15,7 +15,7 @@
 
     "files": [{
         "includePattern": "pkg/(.*)\\.deb",
-        "uploadPattern": "pool/main/h/hello-$1_$VERSION.deb",
+        "uploadPattern": "pool/main/h/hello-$1_$VERSION_amd64.deb",
         "matrixParams": {
             "deb_distribution": "all",
             "deb_component": "main",
