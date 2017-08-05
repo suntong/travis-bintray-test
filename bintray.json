@@ -1,6 +1,6 @@
 {
     "package": {
-        "name": "hello",
+        "name": "hello-$NAME",
         "repo": "travis-example",
         "subject": "suntong"
     },
@@ -15,7 +15,7 @@
 
     "files": [{
         "includePattern": "pkg/(.*)\\.deb",
-        "uploadPattern": "pool/main/h/hello_$1_$VERSION_amd64.deb",
+        "uploadPattern": "pool/main/h/hello-$1_$VERSION.deb",
         "matrixParams": {
             "deb_distribution": "all",
             "deb_component": "main",
