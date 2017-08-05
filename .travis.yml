@@ -18,7 +18,7 @@ before_deploy:
 deploy:
   # "production" deploy
   - provider: bintray
-    user: dominikznidar
+    user: suntong
     key: $BINTRAY_API_KEY
     file: descriptor.json
     skip_cleanup: true
@@ -28,7 +28,7 @@ deploy:
 
   # "staging" deploy
   - provider: bintray
-    user: dominikznidar
+    user: suntong
     key: $BINTRAY_API_KEY
     file: descriptor.json
     skip_cleanup: true
