@@ -12,15 +12,15 @@ env:
 before_deploy:
   - gem install fpm --no-document
   - make pkg
-  - sed -i'' -e "s/\$VERSION/${TRAVIS_TAG:=0.0.0}/" descriptor.json
-  - sed -i'' -e "s/\$DATE/$(date +%Y-%m-%d)/" descriptor.json
+  - sed -i'' -e "s/\$VERSION/${TRAVIS_TAG:=0.0.0}/" bintray.json
+  - sed -i'' -e "s/\$DATE/$(date +%Y-%m-%d)/" bintray.json
 
 deploy:
   # "production" deploy
   - provider: bintray
     user: suntong
     key: $BINTRAY_API_KEY
-    file: descriptor.json
+    file: bintray.json
     skip_cleanup: true
     on:
       go: 1.7.5
@@ -30,7 +30,7 @@ deploy:
   - provider: bintray
     user: suntong
     key: $BINTRAY_API_KEY
-    file: descriptor.json
+    file: bintray.json
     skip_cleanup: true
     on:
       go: 1.7.5
