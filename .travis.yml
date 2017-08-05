@@ -5,7 +5,7 @@ go:
 env:
   matrix:
   - NAME=john
-  - NAME=jane
+#  - NAME=jane
 
 before_deploy:
   - gem install fpm --no-document
