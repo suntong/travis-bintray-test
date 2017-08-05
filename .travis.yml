@@ -10,17 +10,18 @@ env:
 before_deploy:
   - gem install fpm --no-document
   - make pkg
-  - sed -i -e "s/\$VERSION/${TRAVIS_TAG:=0.0.0}/" bintray.json
-  - sed -i -e "s/\$DATE/$(date +%Y-%m-%d)/" bintray.json
-  - sed -i -e "s/\$NAME/$NAME/" bintray.json
-  - cat bintray.json
+  - sed -i -e "s/\$VERSION/${TRAVIS_TAG:=0.0.0}/" bintray-pkg.json
+  - sed -i -e "s/\$DATE/$(date +%Y-%m-%d)/" bintray-pkg.json
+  - sed -i -e "s/\$NAME/$NAME/" bintray-pkg.json
+  - cat bintray-pkg.json
 
 deploy:
   # "production" deploy
   - provider: bintray
     user: suntong
-    key: $BINTRAY_API_KEY
-    file: bintray.json
+    key:
+      secure: zCVYBXSxvKsjTDF71ffHg6wW/pEze5743agKaWJP9/AePgR/+KokjLhwPEko3V8FaiS9SoWcYIOwOVI4TkRulC2pkiE82eO27+TTXHs9g6lA3bHR1LRm+EZR3FELCSusKvVAUfHJUdGuyDrxjx453rKv9bZhZSYUt5vq3Po3nrvpPO3PgNFWTzbNS5OZIWD4fY2Y5FwbLmrZZZpc6r3dHWsBV1k1bmtUX4Rr0Xkyt/e7vMFqplYSFO3/wEkwpyuv8hjSKe+aTqACs7m17FTLjJO4g1p6W+Q+HnbT2xKyG03hXRYnkBi2+1q3d3BfKbtTYs625nRbQSfVBk7N/AWPvtuBGzJYaaT+dDSUpRW6pcnmB0lDB+pNIHUaE/+FAe1QMmRPdi7LYsgEH4IsC/AOMqstuB5npzpQuzf4Z2YLZbFlZM/L8dH2XEQaPsBDt7ihUrbx7j2Jb2AB/JX6lkz0hDBEhi1D9TRQpSIhRkjji3H+Re7IBBLKiFEcmIw3yQIF80nU0QP+tEvj3WABQ+Cylu/nXg7iHI9/DOJG7NfOHMarME1n48+Qm0QKvvCPJq8WJ9mLDYkULGCFOWplfd2NUfsKPxwp87382GGXMRm9LmvoEreY6RpjX+CxpgKNGn8ojfJ9tUShZaAOwod98Q/MBgEtAKOYBarGnjXJDjprTqY=
+    file: bintray-pkg.json
     skip_cleanup: true
     on:
       tags: true
@@ -28,8 +29,9 @@ deploy:
   # "staging" deploy
   - provider: bintray
     user: suntong
-    key: $BINTRAY_API_KEY
-    file: bintray.json
+    key:
+      secure: zCVYBXSxvKsjTDF71ffHg6wW/pEze5743agKaWJP9/AePgR/+KokjLhwPEko3V8FaiS9SoWcYIOwOVI4TkRulC2pkiE82eO27+TTXHs9g6lA3bHR1LRm+EZR3FELCSusKvVAUfHJUdGuyDrxjx453rKv9bZhZSYUt5vq3Po3nrvpPO3PgNFWTzbNS5OZIWD4fY2Y5FwbLmrZZZpc6r3dHWsBV1k1bmtUX4Rr0Xkyt/e7vMFqplYSFO3/wEkwpyuv8hjSKe+aTqACs7m17FTLjJO4g1p6W+Q+HnbT2xKyG03hXRYnkBi2+1q3d3BfKbtTYs625nRbQSfVBk7N/AWPvtuBGzJYaaT+dDSUpRW6pcnmB0lDB+pNIHUaE/+FAe1QMmRPdi7LYsgEH4IsC/AOMqstuB5npzpQuzf4Z2YLZbFlZM/L8dH2XEQaPsBDt7ihUrbx7j2Jb2AB/JX6lkz0hDBEhi1D9TRQpSIhRkjji3H+Re7IBBLKiFEcmIw3yQIF80nU0QP+tEvj3WABQ+Cylu/nXg7iHI9/DOJG7NfOHMarME1n48+Qm0QKvvCPJq8WJ9mLDYkULGCFOWplfd2NUfsKPxwp87382GGXMRm9LmvoEreY6RpjX+CxpgKNGn8ojfJ9tUShZaAOwod98Q/MBgEtAKOYBarGnjXJDjprTqY=
+    file: bintray-pkg.json
     skip_cleanup: true
     on:
       branch: master
