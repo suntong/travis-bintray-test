@@ -13,6 +13,7 @@ before_deploy:
   - sed -i -e "s/\$VERSION/${TRAVIS_TAG:=0.0.0}/" bintray.json
   - sed -i -e "s/\$DATE/$(date +%Y-%m-%d)/" bintray.json
   - sed -i -e "s/\$NAME/$NAME/" bintray.json
+  - cat bintray.json
 
 deploy:
   # "production" deploy
