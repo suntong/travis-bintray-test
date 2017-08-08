@@ -10,7 +10,7 @@ env:
 before_deploy:
   - gem install fpm --no-document
   - make pkg
-  - sed -i -e "s/\$VERSION/${TRAVIS_TAG:=0.0.0}/" bintray-pkg.json
+  - sed -i -e "s/\$VERSION/${TRAVIS_TAG:=0.0_git$(date +%Y%m%d)-1}/" bintray-pkg.json
   - sed -i -e "s/\$DATE/$(date +%Y-%m-%d)/" bintray-pkg.json
   - sed -i -e "s/\$NAME/$NAME/" bintray-pkg.json
   - cat bintray-pkg.json

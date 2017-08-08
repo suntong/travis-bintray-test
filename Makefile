@@ -25,7 +25,6 @@ pkg/%.deb:
 		--package ./pkg/$(NAME).deb \
 		--force \
 		--category admin \
-		--epoch $(shell /bin/date +%s) \
 		--iteration $(VERSION) \
 		--deb-compression bzip2 \
 		--url http://example.com \
