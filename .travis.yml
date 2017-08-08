@@ -4,6 +4,8 @@ env:
   global:
     - VERSION="${TRAVIS_TAG:=0.0_git$(date +%Y%m%d)-1}"
     - PKG_URL="http://example.com"
+    - PKG_CAT=utils
+    - PKG_ARCH=amd64
     - PKG_DESC="Simple hello app"
     - PKG_MAINT="John Doe <john.dow@example.com>"
     - PKG_LICNS="MIT"

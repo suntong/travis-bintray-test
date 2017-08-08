@@ -24,13 +24,13 @@ pkg/%.deb:
 		--name hello-${NAME} \
 		--package ./pkg/${NAME}.deb \
 		--force \
-		--category admin \
 		--deb-compression bzip2 \
 		--url "${PKG_URL}" \
+		--category ${PKG_CAT} \
 		--description "${PKG_DESC}" \
 		--maintainer "${PKG_MAINT}" \
 		--license "${PKG_LICNS}" \
 		--version ${VERSION} \
-		--architecture amd64 \
+		--architecture ${PKG_ARCH} \
 		--depends apt \
 		./build/${NAME}/=/usr/bin/
