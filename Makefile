@@ -29,6 +29,7 @@ pkg/%.deb:
 		--category ${PKG_CAT} \
 		--description "${PKG_DESC}" \
 		--maintainer "${PKG_MAINT}" \
+		--vendor "${PKG_VEND}" \
 		--license "${PKG_LICNS}" \
 		--version ${VERSION} \
 		--architecture ${PKG_ARCH} \

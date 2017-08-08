@@ -7,6 +7,7 @@ env:
     - PKG_CAT=utils
     - PKG_ARCH=amd64
     - PKG_DESC="Simple hello app"
+    - PKG_VEND="example"
     - PKG_MAINT="John Doe <john.dow@example.com>"
     - PKG_LICNS="MIT"
   matrix:
