@@ -26,10 +26,10 @@ pkg/%.deb:
 		--force \
 		--category admin \
 		--deb-compression bzip2 \
-		--url http://example.com \
-		--description ${PKG_DESC} \
-		--maintainer ${PKG_MAINT} \
-		--license ${PKG_LICNS} \
+		--url "${PKG_URL}" \
+		--description "${PKG_DESC}" \
+		--maintainer "${PKG_MAINT}" \
+		--license "${PKG_LICNS}" \
 		--version ${VERSION} \
 		--architecture amd64 \
 		--depends apt \
