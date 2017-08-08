@@ -2,7 +2,13 @@
     "package": {
         "name": "hello-$NAME",
         "repo": "travis-example",
-        "subject": "suntong"
+        "subject": "suntong",
+        "desc": "hello example.",
+        "website_url": "https://github.com/suntong/travis-bintray-test",
+        "issue_tracker_url": "https://github.com/suntong/travis-bintray-test/issues",
+        "vcs_url": "https://github.com/suntong/travis-bintray-test.git",
+        "licenses": ["MIT"],
+        "public_download_numbers": false
     },
 
     "version": {
