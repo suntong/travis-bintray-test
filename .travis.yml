@@ -3,7 +3,8 @@ language: go
 go:
 
 env:
-  - VERSION=${TRAVIS_TAG:=0.0_git$(date +%Y%m%d)-1}
+  global:
+    - VERSION="${TRAVIS_TAG:=0.0_git$(date +%Y%m%d)-1}"
   matrix:
   - NAME=john
   - NAME=jane
