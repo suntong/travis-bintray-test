@@ -1,13 +1,14 @@
 language: go
 
-go:
-
 env:
   global:
     - VERSION="${TRAVIS_TAG:=0.0_git$(date +%Y%m%d)-1}"
+    - PKG_DESC="Simple hello app"
+    - PKG_MAINT="John Doe <john.dow@example.com>"
+    - PKG_LICNS="MIT"
   matrix:
-  - NAME=john
-  - NAME=jane
+    - NAME=john
+    - NAME=jane
 
 before_deploy:
   - gem install fpm --no-document

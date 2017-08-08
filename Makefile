@@ -10,27 +10,27 @@ cleanpkg:
 	rm -fr ./pkg
 
 test:
-	go test -ldflags "-X main.name=$(NAME)"
+	go test -ldflags "-X main.name=${NAME}"
 
-build: build/$(NAME)/hello
+build: build/${NAME}/hello
 build/%/hello:
 	mkdir -p build/$*
 	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -a -installsuffix cgo -ldflags "-X main.name=$*" -o build/$*/hello
 
-pkg: build pkg/$(NAME).deb
+pkg: build pkg/${NAME}.deb
 pkg/%.deb:
 	mkdir -p ./pkg
 	fpm -s dir -t deb \
-		--name hello \
-		--package ./pkg/$(NAME).deb \
+		--name hello-${NAME} \
+		--package ./pkg/${NAME}.deb \
 		--force \
 		--category admin \
 		--deb-compression bzip2 \
 		--url http://example.com \
-		--description "Simple hello app" \
-		--maintainer "John Doe <john.dow@example.com>" \
-		--license "MIT" \
-		--version $(VERSION) \
+		--description ${PKG_DESC} \
+		--maintainer ${PKG_MAINT} \
+		--license ${PKG_LICNS} \
+		--version ${VERSION} \
 		--architecture amd64 \
 		--depends apt \
-		./build/$(NAME)/=/usr/bin/
+		./build/${NAME}/=/usr/bin/
